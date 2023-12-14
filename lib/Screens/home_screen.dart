@@ -1,7 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:se380_project/Screens/profile_screen.dart';
+import 'info_screen.dart';
 import 'options_screen.dart';
+
 
 
 class HomeScreen extends StatefulWidget {
@@ -76,7 +79,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   icon: Icon(Icons.person),
 
                   onPressed: () {
-                    //TODO: user profiline gitsin
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ProfileScreen()));
                   }
               ),
             ),
@@ -116,7 +121,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   icon: Icon(Icons.question_mark),
 
                   onPressed: () {
-                    //TODO: user profiline gitsin
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => InfoScreen()));
                   }
               ),
             ),

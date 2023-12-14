@@ -20,6 +20,8 @@ class _LoginState extends State<LoginScreen> {
   TextEditingController passwordController = TextEditingController();
   String? userPhotoPath; // Initialize with null
 
+
+
   // Function to open the image picker
   Future<void> _pickImage() async {
     final picker = ImagePicker();
