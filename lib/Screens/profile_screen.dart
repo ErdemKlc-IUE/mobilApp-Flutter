@@ -50,7 +50,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 backgroundColor: Colors.teal[100],
                 textStyle: TextStyle(color: Colors.indigo[800])
               ),
-              child: Text('Change Password'),
+              child: const Text(
+                  'Change Password',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 17.0,
+                  ),
+                ),
               onPressed: () {
                 //TODO
               },
@@ -58,11 +65,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
             SizedBox(height: 10),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  minimumSize: Size(150, 50),
+                  minimumSize: Size(185, 50),
                   backgroundColor: Colors.teal[100],
-                  textStyle: TextStyle(color: Colors.indigo[800])
+
               ),
-              child: Text('Log Out'),
+              child: const Text(
+                  'Log Out',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 17.0,
+                  ),
+                ),
               onPressed: () {
                 //TODO
               },
