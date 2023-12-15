@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "720857719098",
+    "project_id": "se380project-c9ac4",
+    "storage_bucket": "se380project-c9ac4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720857719098:android:f4f10afb2c9834b20cf003",
+        "android_client_info": {
+          "package_name": "com.example.se380_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPVzqo3Oc8vPvJAEzYxrO4EruxVRk8Amw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
