@@ -1,7 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:se380_project/Screens/login_screen.dart';
+import 'package:se380_project/Screens/home_screen.dart';
+
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -13,7 +14,8 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-
+  String _newPassword = '';
+  String _confirmPassword = '';
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +48,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             SizedBox(height: 40),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(150, 50),
+                minimumSize: Size(185, 50),
                 backgroundColor: Colors.teal[100],
                 textStyle: TextStyle(color: Colors.indigo[800])
               ),
@@ -59,7 +61,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               onPressed: () {
-                //TODO
+                _showChangePasswordDialog(context);
               },
             ),
             SizedBox(height: 10),
@@ -78,13 +80,111 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               onPressed: () {
-                //TODO
+                _logout();
               },
             ),
           ],
         ),
+
       ),
 
     );
+  }
+
+  void _showChangePasswordDialog(BuildContext context) {
+    final TextEditingController _newPasswordController = TextEditingController();
+    final TextEditingController _confirmPasswordController = TextEditingController();
+
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Change Password'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              controller: _newPasswordController,
+              obscureText: true,
+              decoration: InputDecoration(labelText: 'New Password'),
+            ),
+            TextField(
+              controller: _confirmPasswordController,
+              obscureText: true,
+              decoration: InputDecoration(labelText: 'Confirm Password'),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            child: Text('Cancel'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          TextButton(
+            child: Text('Accept'),
+            onPressed: () {
+    if (_newPasswordController.text.isNotEmpty && _newPasswordController.text == _confirmPasswordController.text) {
+    // Perform password change logic here
+    _showSuccessDialog("Password changed successfully.");
+
+    } else if(_newPasswordController.text.isEmpty) {
+      _showErrorDialog('Please fill in the blanks.');
+    }
+    else {
+      _showErrorDialog('Passwords do not match.');
+    }
+
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+
+  void _showSuccessDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Success'),
+        content: Text('Password changed successfully.'),
+        actions: [
+          TextButton(
+            child: Text('OK'),
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Error'),
+        content: Text(message),
+        actions: [
+          TextButton(
+            child: Text('OK'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _logout() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const HomeScreen()));
   }
 }
