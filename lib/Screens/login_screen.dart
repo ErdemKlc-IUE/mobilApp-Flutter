@@ -69,9 +69,10 @@ class _LoginState extends State<LoginScreen> {
                   )
                       : null,
                   child: userPhotoPath == null
-                      ? Icon(
+                      ? const Icon(
                     Icons.add_a_photo,
                     size: 50,
+                    color: Colors.black,
                   )
                       : null,
                 ),
@@ -127,10 +128,10 @@ class _LoginState extends State<LoginScreen> {
                         );
                       }*/
                     },
-                    child: Text(
+                    child: const Text(
                         'Submit',
                       style: TextStyle(
-                        color: Colors.indigo[800],
+                        color: Colors.black,
                       ),
                     ),
                   ),
