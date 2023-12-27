@@ -1,27 +1,34 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:se380_project/Screens/addEmployee_screen.dart';
 
+import 'info_screen.dart';
 import 'options_screen.dart';
 
 class EmployeeOperationsScreen extends StatefulWidget {
-  const EmployeeOperationsScreen({super.key});
+  EmployeeOperationsScreen({super.key});
+
+  static String name = "";
+  static String cardNumber = "";
+  static String hourlySalary = "";
+
+  static void addtoList (String name, String cardNumber, String hourlySalary){
+    _EmployeeOperationsScreenState.employeeList.add(name);
+    _EmployeeOperationsScreenState.cardNumberList.add(cardNumber);
+    _EmployeeOperationsScreenState.hourlySalaryList.add(hourlySalary);
+
+}
 
   @override
   _EmployeeOperationsScreenState createState() => _EmployeeOperationsScreenState();
 }
 
-
 class _EmployeeOperationsScreenState extends State<EmployeeOperationsScreen> {
 
-  final List<String> employeeList = [
-    'Employee 1',
-    'Employee 2',
-    'Employee 3',
-    'Employee 4',
-    'Employee 5',
-    'Employee 6'
-    ];
+  static List<String> employeeList = [];
+  static List<String> cardNumberList = [];
+  static List<String> hourlySalaryList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -57,8 +64,28 @@ class _EmployeeOperationsScreenState extends State<EmployeeOperationsScreen> {
 
                     ),
                     onPressed: () {
-                      // Action when a button is pressed
-                      print('Button ${index + 1} pressed');
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text(EmployeeOperationsScreen.name),
+                            content: Text('Name: ' + EmployeeOperationsScreen.name +
+                                '\nCard Number: ' + cardNumberList.elementAt(index)+
+                                '\nHourly Salary: ' + hourlySalaryList.elementAt(index),
+                            style: const TextStyle(
+                              fontSize: 20
+                            ),),
+                            actions: <Widget>[
+                              TextButton(
+                                child: Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop(); // Close the dialog
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
                     },
                     child: Text(employeeList[index],
                       style: const TextStyle(
@@ -71,7 +98,7 @@ class _EmployeeOperationsScreenState extends State<EmployeeOperationsScreen> {
               },
             ),
           ),
-          SizedBox(height:80), //spacing between the button list and icon buttons
+          SizedBox(height:35), //spacing between the button list and icon buttons
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -92,62 +119,50 @@ class _EmployeeOperationsScreenState extends State<EmployeeOperationsScreen> {
                   color: Colors.white,
                   icon: Icon(Icons.add),
                   onPressed: () {
+                    Navigator.pop(context);
                     Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => OptionsScreen()));
+                        MaterialPageRoute(builder: (context) => AddEmployeeScreen()));
                   },
                 ),
               ),
-
-              Container(
-
-                height: 80,
-                width: 80,
-
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.teal,
-                ),
-                child: IconButton(
-                  padding: EdgeInsets.zero,
-
-                  iconSize: 55.0,
-                  color: Colors.white,
-                  icon: Icon(Icons.edit),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => OptionsScreen()));
-                  },
-                ),
-              ),
-
-              Container(
-
-                height: 80,
-                width: 80,
-
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.teal,
-                ),
-                child: IconButton(
-                  padding: EdgeInsets.zero,
-
-                  iconSize: 55.0,
-                  color: Colors.white,
-                  icon: Icon(Icons.delete_forever),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => OptionsScreen()));
-                  },
-                ),
-              ),
-
             ],
           ),
-        ],
+       ],
+      ),
+
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.transparent,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+              width: 60.0,
+              height: 90.0,
+
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.teal,
+              ),
+
+              child: IconButton(
+                  padding: EdgeInsets.zero,
+                  iconSize: 50.0,
+                  color: Colors.white,
+
+                  icon: Icon(Icons.question_mark),
+
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => InfoScreen()));
+                  }
+              ),
+            ),
+          ],
+        ),
+
+
       ),
     );
   }

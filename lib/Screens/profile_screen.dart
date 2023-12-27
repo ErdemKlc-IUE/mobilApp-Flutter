@@ -30,18 +30,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Container(
               width: 100.0,
               height: 100.0,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.teal,
               ),
-              child: Icon(
+              child: const Icon(
                 Icons.person,
                 size: 75.0,
                 color: Colors.white,
               ),
             ),
             SizedBox(height: 10),
-            Text(
+            const Text(
               'NAME-SURNAME',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0),
             ),
