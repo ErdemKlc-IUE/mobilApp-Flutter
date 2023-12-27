@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:se380_project/Screens/addEmployee_screen.dart';
+import 'package:se380_project/Screens/editEmployee_Screen.dart';
 
 import 'info_screen.dart';
-import 'options_screen.dart';
 
 class EmployeeOperationsScreen extends StatefulWidget {
   EmployeeOperationsScreen({super.key});
@@ -13,18 +13,48 @@ class EmployeeOperationsScreen extends StatefulWidget {
   static String cardNumber = "";
   static String hourlySalary = "";
 
+  static int index= 0;
+
+
   static void addtoList (String name, String cardNumber, String hourlySalary){
     _EmployeeOperationsScreenState.employeeList.add(name);
     _EmployeeOperationsScreenState.cardNumberList.add(cardNumber);
     _EmployeeOperationsScreenState.hourlySalaryList.add(hourlySalary);
-
 }
+
+  static void removeFromList (){
+    _EmployeeOperationsScreenState.employeeList.removeAt(index);
+    _EmployeeOperationsScreenState.cardNumberList.removeAt(index);
+    _EmployeeOperationsScreenState.hourlySalaryList.removeAt(index);
+  }
+
+  static void changeName (){
+    _EmployeeOperationsScreenState.employeeList[index] = name;
+  }
+  static void changeCardNumber (){
+    _EmployeeOperationsScreenState.cardNumberList[index] = cardNumber;
+  }
+  static void changeHourlySalary (){
+    _EmployeeOperationsScreenState.hourlySalaryList[index] = hourlySalary;
+  }
+
+  static String getName (){
+    return _EmployeeOperationsScreenState.employeeList.elementAt(index);
+  }
+  static String getCardNumber (){
+    return _EmployeeOperationsScreenState.cardNumberList.elementAt(index);
+  }
+  static String getHourlySalary (){
+    return _EmployeeOperationsScreenState.hourlySalaryList.elementAt(index);
+  }
 
   @override
   _EmployeeOperationsScreenState createState() => _EmployeeOperationsScreenState();
 }
 
 class _EmployeeOperationsScreenState extends State<EmployeeOperationsScreen> {
+
+
 
   static List<String> employeeList = [];
   static List<String> cardNumberList = [];
@@ -64,24 +94,39 @@ class _EmployeeOperationsScreenState extends State<EmployeeOperationsScreen> {
 
                     ),
                     onPressed: () {
+                      EmployeeOperationsScreen.index = index;
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
                           return AlertDialog(
-                            title: Text(EmployeeOperationsScreen.name),
-                            content: Text('Name: ' + EmployeeOperationsScreen.name +
+                            title: Text(employeeList.elementAt(index)),
+                            content: Text('Name: ' + employeeList.elementAt(index) +
                                 '\nCard Number: ' + cardNumberList.elementAt(index)+
                                 '\nHourly Salary: ' + hourlySalaryList.elementAt(index),
                             style: const TextStyle(
                               fontSize: 20
                             ),),
                             actions: <Widget>[
+
+                              TextButton(
+                                child: Text('Edit'),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                  Navigator.pop(context);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => EditEmployeeScreen()));
+                                },
+                              ),
+
                               TextButton(
                                 child: Text('OK'),
                                 onPressed: () {
-                                  Navigator.of(context).pop(); // Close the dialog
+                                  Navigator.of(context).pop();
                                 },
                               ),
+
+
                             ],
                           );
                         },
