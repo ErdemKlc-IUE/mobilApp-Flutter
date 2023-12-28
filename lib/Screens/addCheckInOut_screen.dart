@@ -81,290 +81,287 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
       const SizedBox(height:30),
 
       ElevatedButton(
-      style: ElevatedButton.styleFrom(
-      primary: Colors.teal[50],
-      minimumSize: Size(185,50),
-    ),
-    onPressed: () {
+          style: ElevatedButton.styleFrom(
+            primary: Colors.teal[50],
+            minimumSize: Size(185,50),
+          ),
+          onPressed: () {
+            setState(() {
+            date = _dateController.text;
+            enterHour = _enterHourController.text;
+            exitHour = _exitHourController.text;
+            });
 
-    setState(() {
-    date = _dateController.text;
-    enterHour = _enterHourController.text;
-    exitHour = _exitHourController.text;
-    });
+            if((date == null || date =="") && (enterHour == null || enterHour=="" ) && (exitHour == null || exitHour=="")){
 
-    if((date == null || date =="") && (enterHour == null || enterHour=="" ) && (exitHour == null || exitHour=="")){
-
-      OverlayEntry overlayEntry = OverlayEntry(
-        builder: (context) => Positioned(
-          top: MediaQuery.of(context).size.height * 0.2,
-          left: MediaQuery.of(context).size.width * 0.2,
-          child: Material(
-            color: Colors.transparent,
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.6,
-              height: MediaQuery.of(context).size.height * 0.2,
-              color: Colors.teal,
-              child: const Center(
-                child: Text(
-                  'Enter Date!\n'
-                      'Enter Enter Hour!\n'
-                      'Enter Exit Hour!',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+              OverlayEntry overlayEntry = OverlayEntry(
+                builder: (context) => Positioned(
+                  top: MediaQuery.of(context).size.height * 0.2,
+                  left: MediaQuery.of(context).size.width * 0.2,
+                  child: Material(
+                    color: Colors.transparent,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.6,
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      color: Colors.teal,
+                      child: const Center(
+                        child: Text(
+                          'Enter Date!\n'
+                              'Enter Enter Hour!\n'
+                              'Enter Exit Hour!',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-          ),
-        ),
-      );
+              );
 
-      Overlay.of(context)?.insert(overlayEntry);
+              Overlay.of(context)?.insert(overlayEntry);
 
-      // Delay to remove the overlay after 2 seconds
-      Future.delayed(Duration(seconds: 2), () {
-        overlayEntry.remove();
-      });
-    }
+              // Delay to remove the overlay after 2 seconds
+              Future.delayed(Duration(seconds: 2), () {
+                overlayEntry.remove();
+              });
+            }
 
-    else if((date == null || date=="") && (exitHour == null || exitHour=="")){
+            else if((date == null || date=="") && (exitHour == null || exitHour=="")){
 
-      OverlayEntry overlayEntry = OverlayEntry(
-        builder: (context) => Positioned(
-          top: MediaQuery.of(context).size.height * 0.2,
-          left: MediaQuery.of(context).size.width * 0.2,
-          child: Material(
-            color: Colors.transparent,
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.6,
-              height: MediaQuery.of(context).size.height * 0.2,
-              color: Colors.teal,
-              child: const Center(
-                child: Text(
-                  'Enter Date!\n'
-                      'Enter Exit Hour!',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+              OverlayEntry overlayEntry = OverlayEntry(
+                builder: (context) => Positioned(
+                  top: MediaQuery.of(context).size.height * 0.2,
+                  left: MediaQuery.of(context).size.width * 0.2,
+                  child: Material(
+                    color: Colors.transparent,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.6,
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      color: Colors.teal,
+                      child: const Center(
+                        child: Text(
+                          'Enter Date!\n'
+                              'Enter Exit Hour!',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-          ),
-        ),
-      );
+              );
 
-      Overlay.of(context)?.insert(overlayEntry);
+              Overlay.of(context)?.insert(overlayEntry);
 
-      // Delay to remove the overlay after 2 seconds
-      Future.delayed(Duration(seconds: 2), () {
-        overlayEntry.remove();
-      });
-    }
+              // Delay to remove the overlay after 2 seconds
+              Future.delayed(Duration(seconds: 2), () {
+                overlayEntry.remove();
+              });
+            }
 
-    else if((enterHour == null || enterHour=="") && (exitHour == null || exitHour=="")){
+            else if((enterHour == null || enterHour=="") && (exitHour == null || exitHour=="")){
 
-      OverlayEntry overlayEntry = OverlayEntry(
-        builder: (context) => Positioned(
-          top: MediaQuery.of(context).size.height * 0.2,
-          left: MediaQuery.of(context).size.width * 0.2,
-          child: Material(
-            color: Colors.transparent,
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.6,
-              height: MediaQuery.of(context).size.height * 0.2,
-              color: Colors.teal,
-              child: const Center(
-                child: Text(
-                  'Enter Card Number!\n'
-                      'Enter Hourly Salary!',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+              OverlayEntry overlayEntry = OverlayEntry(
+                builder: (context) => Positioned(
+                  top: MediaQuery.of(context).size.height * 0.2,
+                  left: MediaQuery.of(context).size.width * 0.2,
+                  child: Material(
+                    color: Colors.transparent,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.6,
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      color: Colors.teal,
+                      child: const Center(
+                        child: Text(
+                          'Enter Card Number!\n'
+                              'Enter Hourly Salary!',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-          ),
-        ),
-      );
+              );
 
-      Overlay.of(context)?.insert(overlayEntry);
+              Overlay.of(context)?.insert(overlayEntry);
 
-      // Delay to remove the overlay after 2 seconds
-      Future.delayed(Duration(seconds: 2), () {
-        overlayEntry.remove();
-      });
-    }
+              // Delay to remove the overlay after 2 seconds
+              Future.delayed(Duration(seconds: 2), () {
+                overlayEntry.remove();
+              });
+            }
 
-    else if((date == null || date =="") && (enterHour == null || enterHour=="")){
+            else if((date == null || date =="") && (enterHour == null || enterHour=="")){
 
-      OverlayEntry overlayEntry = OverlayEntry(
-        builder: (context) => Positioned(
-          top: MediaQuery.of(context).size.height * 0.2,
-          left: MediaQuery.of(context).size.width * 0.2,
-          child: Material(
-            color: Colors.transparent,
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.6,
-              height: MediaQuery.of(context).size.height * 0.2,
-              color: Colors.teal,
-              child: const Center(
-                child: Text(
-                  'Enter Date!\n'
-                      'Enter Enter Hour!',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+              OverlayEntry overlayEntry = OverlayEntry(
+                builder: (context) => Positioned(
+                  top: MediaQuery.of(context).size.height * 0.2,
+                  left: MediaQuery.of(context).size.width * 0.2,
+                  child: Material(
+                    color: Colors.transparent,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.6,
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      color: Colors.teal,
+                      child: const Center(
+                        child: Text(
+                          'Enter Date!\n'
+                              'Enter Enter Hour!',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-          ),
-        ),
-      );
+              );
 
-      Overlay.of(context)?.insert(overlayEntry);
+              Overlay.of(context)?.insert(overlayEntry);
 
-      // Delay to remove the overlay after 2 seconds
-      Future.delayed(Duration(seconds: 2), () {
-        overlayEntry.remove();
-      });
-    }
+              // Delay to remove the overlay after 2 seconds
+              Future.delayed(Duration(seconds: 2), () {
+                overlayEntry.remove();
+              });
+            }
 
+            else if (date == null || date=="") {
+              print('Please enter a date');
 
-    else if (date == null || date=="") {
-      print('Please enter a date');
-
-      OverlayEntry overlayEntry = OverlayEntry(
-        builder: (context) => Positioned(
-          top: MediaQuery.of(context).size.height * 0.2,
-          left: MediaQuery.of(context).size.width * 0.2,
-          child: Material(
-            color: Colors.transparent,
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.6,
-              height: MediaQuery.of(context).size.height * 0.2,
-              color: Colors.teal,
-              child: const Center(
-                child: Text(
-                  'Enter Date!',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+              OverlayEntry overlayEntry = OverlayEntry(
+                builder: (context) => Positioned(
+                  top: MediaQuery.of(context).size.height * 0.2,
+                  left: MediaQuery.of(context).size.width * 0.2,
+                  child: Material(
+                    color: Colors.transparent,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.6,
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      color: Colors.teal,
+                      child: const Center(
+                        child: Text(
+                          'Enter Date!',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-          ),
-        ),
-      );
+              );
 
-      Overlay.of(context)?.insert(overlayEntry);
+              Overlay.of(context)?.insert(overlayEntry);
 
-      // Delay to remove the overlay after 2 seconds
-      Future.delayed(Duration(seconds: 2), () {
-        overlayEntry.remove();
-      });
-    }
+              // Delay to remove the overlay after 2 seconds
+              Future.delayed(Duration(seconds: 2), () {
+                overlayEntry.remove();
+              });
+            }
 
-    else if (enterHour == null || enterHour=="") {
-      print('Please enter a enter Hour');
+            else if (enterHour == null || enterHour=="") {
+              print('Please enter a enter Hour');
 
-      OverlayEntry overlayEntry = OverlayEntry(
-        builder: (context) => Positioned(
-          top: MediaQuery.of(context).size.height * 0.2,
-          left: MediaQuery.of(context).size.width * 0.2,
-          child: Material(
-            color: Colors.transparent,
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.6,
-              height: MediaQuery.of(context).size.height * 0.2,
-              color: Colors.teal,
-              child: const Center(
-                child: Text(
-                  'Enter Enter Hour!',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+              OverlayEntry overlayEntry = OverlayEntry(
+                builder: (context) => Positioned(
+                  top: MediaQuery.of(context).size.height * 0.2,
+                  left: MediaQuery.of(context).size.width * 0.2,
+                  child: Material(
+                    color: Colors.transparent,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.6,
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      color: Colors.teal,
+                      child: const Center(
+                        child: Text(
+                          'Enter Enter Hour!',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-          ),
-        ),
-      );
+              );
 
-      Overlay.of(context)?.insert(overlayEntry);
+              Overlay.of(context)?.insert(overlayEntry);
 
-      // Delay to remove the overlay after 2 seconds
-      Future.delayed(Duration(seconds: 2), () {
-        overlayEntry.remove();
-      });
-    }
+              // Delay to remove the overlay after 2 seconds
+              Future.delayed(Duration(seconds: 2), () {
+                overlayEntry.remove();
+              });
+            }
 
-    else if (exitHour == null || exitHour =="") {
-      print('Please enter a exit hour');
+            else if (exitHour == null || exitHour =="") {
+              print('Please enter a exit hour');
 
-      OverlayEntry overlayEntry = OverlayEntry(
-        builder: (context) => Positioned(
-          top: MediaQuery.of(context).size.height * 0.2,
-          left: MediaQuery.of(context).size.width * 0.2,
-          child: Material(
-            color: Colors.transparent,
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.6,
-              height: MediaQuery.of(context).size.height * 0.2,
-              color: Colors.teal,
-              child: const Center(
-                child: Text(
-                  'Enter ,Exit Hour!',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+              OverlayEntry overlayEntry = OverlayEntry(
+                builder: (context) => Positioned(
+                  top: MediaQuery.of(context).size.height * 0.2,
+                  left: MediaQuery.of(context).size.width * 0.2,
+                  child: Material(
+                    color: Colors.transparent,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.6,
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      color: Colors.teal,
+                      child: const Center(
+                        child: Text(
+                          'Enter ,Exit Hour!',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-          ),
-        ),
-      );
+              );
 
-      Overlay.of(context)?.insert(overlayEntry);
+              Overlay.of(context)?.insert(overlayEntry);
 
-      // Delay to remove the overlay after 2 seconds
-      Future.delayed(Duration(seconds: 2), () {
-        overlayEntry.remove();
-      });
-    }
+              // Delay to remove the overlay after 2 seconds
+              Future.delayed(Duration(seconds: 2), () {
+                overlayEntry.remove();
+              });
+            }
 
+            else{
+              print(date);
+              print(enterHour);
+              print(exitHour);
 
-    else{
-      print(date);
-      print(enterHour);
-      print(exitHour);
+              EmployeeOperationsScreen.name = date;
+              EmployeeOperationsScreen.name = enterHour;
+              EmployeeOperationsScreen.name = exitHour;
+              EmployeeOperationsScreen.addtoList(date, enterHour, exitHour);
 
-      EmployeeOperationsScreen.name = date;
-      EmployeeOperationsScreen.name = enterHour;
-      EmployeeOperationsScreen.name = exitHour;
-      EmployeeOperationsScreen.addtoList(date, enterHour, exitHour);
+              Navigator.pop(context);
 
-      Navigator.pop(context);
-
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Check_In_Out_Screen()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Check_In_Out_Screen()));
 
 
-    }
-    },
+            }
+          },
 
         child: const Text("Save",
           style: TextStyle(
@@ -398,3 +395,4 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
     );
   }
 }
+

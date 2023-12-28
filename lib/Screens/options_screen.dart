@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:se380_project/Screens/employee_operations.dart';
 import 'package:se380_project/Screens/work_plan.dart';
 
+import 'add_work_plan.dart';
 import 'check_in_out.dart';
 import 'excel_file_generation.dart';
 import 'info_screen.dart';
@@ -14,9 +15,20 @@ class OptionsScreen extends StatefulWidget {
 
   @override
   _OptionsScreenState createState() => _OptionsScreenState();
+
+  static void setCounter(){
+    _OptionsScreenState.counter = 1;
+  }
+
+  static int getCounter(){
+    return _OptionsScreenState.counter;
+  }
 }
 
 class _OptionsScreenState extends State<OptionsScreen> {
+
+  static int counter = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -137,9 +149,12 @@ class _OptionsScreenState extends State<OptionsScreen> {
                 ),
               ),
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => WorkPlanScreen()));
+                if(counter == 0){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => AddWorkPlanScreen()));
+                }
+                else {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => WorkPlanScreen()));
+                }
               },
             ),
 
