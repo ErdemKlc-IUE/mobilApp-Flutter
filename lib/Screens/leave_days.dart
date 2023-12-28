@@ -236,6 +236,7 @@ class _LeaveDaysScreenState extends State<LeaveDaysScreen> {
                 minimumSize: Size(185,50),
               ),
               onPressed: () {
+                Navigator.pop(context);
                 Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => OptionsScreen()));
