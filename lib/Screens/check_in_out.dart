@@ -32,18 +32,17 @@ class Check_In_Out_Screen extends StatefulWidget {
 
 
 
-  static void addtoList (String date, String enterHour, String exitHour, String selectedName){
+  static void addtoList (String date, String enterHour, String exitHour){
     _Check_In_Out_ScreenState.dateList.add(date);
     _Check_In_Out_ScreenState.enterHourList.add(enterHour);
     _Check_In_Out_ScreenState.exitHourList.add(exitHour);
-    _Check_In_Out_ScreenState.selectedNameList.add(exitHour);
   }
 
   static void removeFromList (){
     _Check_In_Out_ScreenState.dateList.removeAt(index);
     _Check_In_Out_ScreenState.enterHourList.removeAt(index);
     _Check_In_Out_ScreenState.exitHourList.removeAt(index);
-    _Check_In_Out_ScreenState.selectedNameList.removeAt(index);
+
   }
 
   static void changeDate (){

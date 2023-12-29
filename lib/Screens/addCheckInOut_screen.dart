@@ -25,6 +25,15 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
   static String enterHour = "";
   static String exitHour = "";
 
+  static List<String> dateList = [];
+  static List<String> enterHourList = [];
+  static List<String> exitHourList = [];
+
+
+  late List<String> choices;
+  late String selectedChoice;
+  late int index;
+
   @override
   void dispose() {
     _dateController.dispose();
@@ -33,6 +42,23 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
 
 
     super.dispose();
+  }
+
+  void initState() {
+    super.initState();
+    choices = EmployeeOperationsScreen.getEmployeeList();
+    List<String> employeeList = EmployeeOperationsScreen.getEmployeeList();
+    if(dateList != null && dateList.isEmpty){
+      dateList = List.filled(EmployeeOperationsScreen.getEmployeeList().length, "");}
+    if(enterHourList != null && enterHourList.isEmpty){
+      enterHourList = List.filled(EmployeeOperationsScreen.getEmployeeList().length, "");}
+    if(exitHourList != null && exitHourList.isEmpty){
+      exitHourList = List.filled(EmployeeOperationsScreen.getEmployeeList().length, "");}
+    if (employeeList.isNotEmpty) {
+      selectedChoice = employeeList.first; // Set the initial value to the first item
+    } else {
+      selectedChoice = ''; // Set a default value if the list is empty
+    }
   }
 
   @override
@@ -358,7 +384,7 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
               Check_In_Out_Screen.date = date;
               Check_In_Out_Screen.date = enterHour;
               Check_In_Out_Screen.date = exitHour;
-              Check_In_Out_Screen.addtoList(date, enterHour, exitHour);
+              Check_In_Out_Screen.addtoList(date, enterHour, exitHour, selectedName)
 
               Navigator.pop(context);
 
