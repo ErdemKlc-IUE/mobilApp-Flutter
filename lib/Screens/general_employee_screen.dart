@@ -56,7 +56,7 @@ class _GeneralEmployeeScreenState extends State<GeneralEmployeeScreen> {
                     primary: Colors.teal,
                   ),
                 ),
-                SizedBox(width: 10),
+                SizedBox(width: 40),
                 ElevatedButton(
                   onPressed: () => _printEmployees(),
                   child: Icon(Icons.print),
