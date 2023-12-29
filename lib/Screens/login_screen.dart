@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:se380_project/DatabaseHelper.dart';
+import 'package:se380_project/User.dart';
 
 import 'home_screen.dart';
 
@@ -15,12 +17,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginState extends State<LoginScreen> {
+  // I want to add to my database the email and password of the user
+  // So I need to create two controllers for the two text fields
+
   final _formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   String? userPhotoPath; // Initialize with null
-
-
 
   // Function to open the image picker
   Future<void> _pickImage() async {
@@ -119,9 +122,23 @@ class _LoginState extends State<LoginScreen> {
                     onPressed: () {
 
                       //Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                      User user=User();
 
+                      // I want to add to my database the email and password of the user
+                      // So I need to create two controllers for the two text fields
+
+
+
+                      user.email=emailController.text;
+                      user.password=passwordController.text;
                       if (emailController.text == "email@email.com" && passwordController.text == "1234"){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));}
+
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                      }
+                      else{
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Please fill input')),
+                        );}
                       /*if (_formKey.currentState!.validate()) {
                         // Navigate the user to the Home page
                       } else {
