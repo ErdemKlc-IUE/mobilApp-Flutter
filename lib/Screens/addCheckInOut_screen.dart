@@ -24,13 +24,13 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
   static String date = "";
   static String enterHour = "";
   static String exitHour = "";
-  static String selectedName = "";
 
   @override
   void dispose() {
     _dateController.dispose();
     _enterHourController.dispose();
     _exitHourController.dispose();
+
 
     super.dispose();
   }
@@ -47,28 +47,6 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
       body: Column(
 
           children: <Widget>[
-            ElevatedButton(
-
-            style: ElevatedButton.styleFrom(
-             primary: Colors.teal,
-      ),
-              onPressed: () async {
-                // Navigate to AddEmployeeScreen and wait for the result
-                final result = await Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AddEmployeeScreen()),
-                );
-
-                setState(() {
-                  selectedName = result;
-                });
-              },
-              child: Text('Add Employee'),
-
-            ),
-            // Display the selected name in a Text widget or use it in the dropdown
-            Text('Selected Name: $selectedName'),
-          SizedBox(height:30),
       Padding(
         padding:
         const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
@@ -114,7 +92,6 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
           ),
           onPressed: () {
             setState(() {
-              selectedName = selectedName;
             date = _dateController.text;
             enterHour = _enterHourController.text;
             exitHour = _exitHourController.text;
@@ -374,7 +351,6 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
             }
 
             else{
-              print(selectedName);
               print(date);
               print(enterHour);
               print(exitHour);
@@ -382,8 +358,7 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
               Check_In_Out_Screen.date = date;
               Check_In_Out_Screen.date = enterHour;
               Check_In_Out_Screen.date = exitHour;
-              Check_In_Out_Screen.date = selectedName;
-              Check_In_Out_Screen.addtoList(date, enterHour, exitHour,selectedName);
+              Check_In_Out_Screen.addtoList(date, enterHour, exitHour);
 
               Navigator.pop(context);
 
