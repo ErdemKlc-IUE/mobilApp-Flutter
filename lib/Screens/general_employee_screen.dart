@@ -1,6 +1,7 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:se380_project/Screens/addEmployee_screen.dart';
+import 'package:se380_project/Screens/excel_file_generation.dart';
 import 'employee_operations.dart';
 
 class GeneralEmployeeScreen extends StatefulWidget {
@@ -18,6 +19,7 @@ class _GeneralEmployeeScreenState extends State<GeneralEmployeeScreen> {
   List<List<dynamic>> employees = [];
 
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,8 +31,13 @@ class _GeneralEmployeeScreenState extends State<GeneralEmployeeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
-              onPressed: () => _navigateToEmployeeOperationsPage(context),
+         ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => EmployeeOperationsScreen()));
+              },
               child: Text('Go to Employee Operations'),
               style: ElevatedButton.styleFrom(
                 primary: Colors
@@ -41,15 +48,7 @@ class _GeneralEmployeeScreenState extends State<GeneralEmployeeScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SizedBox(height: 30),
-                ElevatedButton(
-                  onPressed: () => _emailEmployees(),
-                  child: Icon(Icons.email),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors
-                        .teal, // Change this color to the desired background color
-                  ),
-                ),
+                SizedBox(height: 40),
                 ElevatedButton(
                   onPressed: () => _generateExcelFile(),
                   child: Icon(Icons.file_download),
@@ -57,7 +56,7 @@ class _GeneralEmployeeScreenState extends State<GeneralEmployeeScreen> {
                     primary: Colors.teal,
                   ),
                 ),
-                SizedBox(width: 20),
+                SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: () => _printEmployees(),
                   child: Icon(Icons.print),
@@ -74,17 +73,7 @@ class _GeneralEmployeeScreenState extends State<GeneralEmployeeScreen> {
     );
   }
 
-  void _navigateToEmployeeOperationsPage(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => EmployeeOperationsScreen()),
-    );
-  }
 
-
-  void _emailEmployees() async {
-
-  }
 
 
   void _printEmployees() async {

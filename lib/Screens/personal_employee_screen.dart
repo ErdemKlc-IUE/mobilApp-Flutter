@@ -1,4 +1,4 @@
-import 'dart:io';
+
 
 import 'package:flutter/material.dart';
 
@@ -17,7 +17,8 @@ class _PersonalEmployeeScreenState extends State<PersonalEmployeeScreen> {
     return Scaffold(
 
       appBar: AppBar(
-
+        title: Text('Personal Employee Screen'),
+        backgroundColor: Colors.teal,
       ),
 
     );

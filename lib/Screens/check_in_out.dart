@@ -1,4 +1,4 @@
-import 'dart:io';
+
 
 import 'package:flutter/material.dart';
 import 'package:se380_project/Screens/addCheckInOut_screen.dart';
@@ -12,6 +12,7 @@ class Check_In_Out_Screen extends StatefulWidget {
   static String date = "";
   static String enterHour = "";
   static String exitHour = "";
+  static String selectedName = "";
 
   static int index= 0;
 
@@ -31,16 +32,18 @@ class Check_In_Out_Screen extends StatefulWidget {
 
 
 
-  static void addtoList (String date, String enterHour, String exitHour){
+  static void addtoList (String date, String enterHour, String exitHour, String selectedName){
     _Check_In_Out_ScreenState.dateList.add(date);
     _Check_In_Out_ScreenState.enterHourList.add(enterHour);
     _Check_In_Out_ScreenState.exitHourList.add(exitHour);
+    _Check_In_Out_ScreenState.selectedNameList.add(exitHour);
   }
 
   static void removeFromList (){
     _Check_In_Out_ScreenState.dateList.removeAt(index);
     _Check_In_Out_ScreenState.enterHourList.removeAt(index);
     _Check_In_Out_ScreenState.exitHourList.removeAt(index);
+    _Check_In_Out_ScreenState.selectedNameList.removeAt(index);
   }
 
   static void changeDate (){
@@ -51,6 +54,9 @@ class Check_In_Out_Screen extends StatefulWidget {
   }
   static void changeExitHour (){
     _Check_In_Out_ScreenState.exitHourList[index] = exitHour;
+  }
+  static void changeSelectedName (){
+    _Check_In_Out_ScreenState.selectedNameList[index] = selectedName;
   }
 
   @override
@@ -63,6 +69,7 @@ class _Check_In_Out_ScreenState extends State<Check_In_Out_Screen> {
   static List<String> dateList = [];
   static List<String> enterHourList = [];
   static List<String> exitHourList = [];
+  static List<String> selectedNameList = [];
 
 
   @override
@@ -70,6 +77,7 @@ class _Check_In_Out_ScreenState extends State<Check_In_Out_Screen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Check-In/Out List'),
+        backgroundColor: Colors.teal,
       ),
       body: Column(
         children: [
@@ -105,9 +113,10 @@ class _Check_In_Out_ScreenState extends State<Check_In_Out_Screen> {
                         builder: (BuildContext context) {
                           return AlertDialog(
                             title: Text(dateList.elementAt(index)),
-                            content: Text('Name: ' + dateList.elementAt(index) +
-                                '\nCard Number: ' + enterHourList.elementAt(index)+
-                                '\nHourly Salary: ' + exitHourList.elementAt(index),
+                            content: Text('Name: ' + selectedNameList.elementAt(index) +
+                                '\nDate: ' + dateList.elementAt(index) +
+                                '\nEnter Hour: ' + enterHourList.elementAt(index)+
+                                '\nExit Hour: ' + exitHourList.elementAt(index),
                               style: const TextStyle(
                                   fontSize: 20
                               ),),

@@ -1,4 +1,5 @@
-import 'dart:io';
+
+
 
 import 'package:flutter/material.dart';
 import 'package:se380_project/Screens/employee_operations.dart';
@@ -36,6 +37,7 @@ class _EditEmployeeScreenState extends State<EditEmployeeScreen> {
 
       appBar: AppBar(
         title: Text('Add Employee'),
+        backgroundColor: Colors.teal,
       ),
 
       body: Column(

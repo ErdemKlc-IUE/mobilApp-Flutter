@@ -1,4 +1,4 @@
-import 'dart:io';
+
 
 
 import 'package:flutter/material.dart';
@@ -8,6 +8,8 @@ class AddEmployeeScreen extends StatefulWidget {
 
   @override
   _AddEmployeeScreenState createState() => _AddEmployeeScreenState();
+
+  void onNameSelected(String text) {}
 }
 
 
@@ -53,7 +55,19 @@ class _AddEmployeeScreenState extends State<AddEmployeeScreen> {
               ),
             ),
           ),
+      ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: Colors.teal,
+        ),
+        onPressed: () {
+          // Call the callback function to pass the name to the parent screen
+          widget.onNameSelected(_nameController.text);
+          Navigator.pop(context);
+        },
+        child: Text('Save'),
 
+
+      ),
           Padding(
             padding:
             const EdgeInsets.symmetric(horizontal: 8, vertical: 16),

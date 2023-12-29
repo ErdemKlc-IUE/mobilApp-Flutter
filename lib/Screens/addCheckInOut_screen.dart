@@ -1,5 +1,8 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:se380_project/Screens/addEmployee_screen.dart';
 import 'package:se380_project/Screens/check_in_out.dart';
 import 'package:se380_project/Screens/employee_operations.dart';
 
@@ -21,12 +24,14 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
   static String date = "";
   static String enterHour = "";
   static String exitHour = "";
+  static String selectedName = "";
 
   @override
   void dispose() {
     _dateController.dispose();
     _enterHourController.dispose();
     _exitHourController.dispose();
+
     super.dispose();
   }
 
@@ -36,11 +41,33 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
 
       appBar: AppBar(
         title: Text('Add Check-In/Out'),
+        backgroundColor: Colors.teal,
       ),
 
       body: Column(
 
-          children: [
+          children: <Widget>[
+            ElevatedButton(
+
+            style: ElevatedButton.styleFrom(
+             primary: Colors.teal,
+      ),
+              onPressed: () async {
+                // Navigate to AddEmployeeScreen and wait for the result
+                final result = await Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddEmployeeScreen()),
+                );
+
+                setState(() {
+                  selectedName = result;
+                });
+              },
+              child: Text('Add Employee'),
+
+            ),
+            // Display the selected name in a Text widget or use it in the dropdown
+            Text('Selected Name: $selectedName'),
           SizedBox(height:30),
       Padding(
         padding:
@@ -87,6 +114,7 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
           ),
           onPressed: () {
             setState(() {
+              selectedName = selectedName;
             date = _dateController.text;
             enterHour = _enterHourController.text;
             exitHour = _exitHourController.text;
@@ -106,9 +134,9 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
                       color: Colors.teal,
                       child: const Center(
                         child: Text(
-                          'Enter Date!\n'
-                              'Enter Enter Hour!\n'
-                              'Enter Exit Hour!',
+                          'Enter a Date!\n'
+                              'Enter an Enter Hour!\n'
+                              'Enter an Exit Hour!',
                           style: TextStyle(
                             fontSize: 20.0,
                             color: Colors.white,
@@ -143,8 +171,8 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
                       color: Colors.teal,
                       child: const Center(
                         child: Text(
-                          'Enter Date!\n'
-                              'Enter Exit Hour!',
+                          'Enter a Date!\n'
+                              'Enter an Exit Hour!',
                           style: TextStyle(
                             fontSize: 20.0,
                             color: Colors.white,
@@ -179,8 +207,8 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
                       color: Colors.teal,
                       child: const Center(
                         child: Text(
-                          'Enter Card Number!\n'
-                              'Enter Hourly Salary!',
+                          'Enter an Enter Hour!\n'
+                              'Enter an exit Hour!',
                           style: TextStyle(
                             fontSize: 20.0,
                             color: Colors.white,
@@ -215,8 +243,8 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
                       color: Colors.teal,
                       child: const Center(
                         child: Text(
-                          'Enter Date!\n'
-                              'Enter Enter Hour!',
+                          'Enter a Date!\n'
+                              'Enter an Enter Hour!',
                           style: TextStyle(
                             fontSize: 20.0,
                             color: Colors.white,
@@ -252,7 +280,7 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
                       color: Colors.teal,
                       child: const Center(
                         child: Text(
-                          'Enter Date!',
+                          'Enter a Date!',
                           style: TextStyle(
                             fontSize: 20.0,
                             color: Colors.white,
@@ -274,7 +302,7 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
             }
 
             else if (enterHour == null || enterHour=="") {
-              print('Please enter a enter Hour');
+              print('Please enter an enter Hour');
 
               OverlayEntry overlayEntry = OverlayEntry(
                 builder: (context) => Positioned(
@@ -288,7 +316,7 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
                       color: Colors.teal,
                       child: const Center(
                         child: Text(
-                          'Enter Enter Hour!',
+                          'Enter an Enter Hour!',
                           style: TextStyle(
                             fontSize: 20.0,
                             color: Colors.white,
@@ -310,7 +338,7 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
             }
 
             else if (exitHour == null || exitHour =="") {
-              print('Please enter a exit hour');
+              print('Please enter an exit hour');
 
               OverlayEntry overlayEntry = OverlayEntry(
                 builder: (context) => Positioned(
@@ -324,7 +352,7 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
                       color: Colors.teal,
                       child: const Center(
                         child: Text(
-                          'Enter ,Exit Hour!',
+                          'Enter an Exit Hour!',
                           style: TextStyle(
                             fontSize: 20.0,
                             color: Colors.white,
@@ -346,14 +374,16 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
             }
 
             else{
+              print(selectedName);
               print(date);
               print(enterHour);
               print(exitHour);
 
-              EmployeeOperationsScreen.name = date;
-              EmployeeOperationsScreen.name = enterHour;
-              EmployeeOperationsScreen.name = exitHour;
-              EmployeeOperationsScreen.addtoList(date, enterHour, exitHour);
+              Check_In_Out_Screen.date = date;
+              Check_In_Out_Screen.date = enterHour;
+              Check_In_Out_Screen.date = exitHour;
+              Check_In_Out_Screen.date = selectedName;
+              Check_In_Out_Screen.addtoList(date, enterHour, exitHour,selectedName);
 
               Navigator.pop(context);
 

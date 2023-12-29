@@ -1,4 +1,4 @@
-import 'dart:io';
+
 
 import 'package:flutter/material.dart';
 import 'package:se380_project/Screens/addEmployee_screen.dart';
@@ -65,6 +65,7 @@ class _EmployeeOperationsScreenState extends State<EmployeeOperationsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Employee List'),
+        backgroundColor: Colors.teal,
       ),
       body: Column(
         children: [

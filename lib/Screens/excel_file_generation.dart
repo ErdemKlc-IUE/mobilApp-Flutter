@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:se380_project/Screens/general_employee_screen.dart';
+import 'package:se380_project/Screens/personal_employee_screen.dart';
 
 class ExcelFileGenerationScreen extends StatefulWidget {
   const ExcelFileGenerationScreen({super.key});
@@ -21,28 +22,41 @@ class _ExcelFileGenerationScreenState extends State<ExcelFileGenerationScreen> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[Container(
-
+          children: [
+            ElevatedButton(
+              child: Text('General'),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.teal, // Change this color to the desired background color
+              ),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => GeneralEmployeeScreen()));
+              },
+            ),
+            SizedBox(height: 40),
+            ElevatedButton(
+              child: Text('Personal'),
+              style: ElevatedButton.styleFrom(
+                primary: Colors
+                    .teal, // Change this color to the desired background color
+              ),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PersonalEmployeeScreen()));
+              },
+            ),
+            SizedBox(height: 40),
+    ]
       ),
 
-     ],
         ),
-    ),
     );
+
   }
 
 }
 
 
-Future<void> downloadExcelFile() async {
-  // Code for downloading the Excel file
-}
-
-Future<void> printExcelFile() async {
-  // Code for printing the Excel file
-}
-
-Future<void> mailExcelFile() async {
-  // Code for sending the Excel file via email
-}
 
