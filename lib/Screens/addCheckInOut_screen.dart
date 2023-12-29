@@ -73,6 +73,57 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
       body: Column(
 
           children: <Widget>[
+            const SizedBox(height:20),
+            Row(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                ),
+                const Text(
+                  'Employee: ',
+                  style: TextStyle(fontSize: 20),
+                ),
+                SizedBox(width: 10.0),
+                Container(
+                  width: 250.0,
+                  height: 50.0,
+
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    border: Border.all(color: Colors.grey, width: 1.0),
+                    color: Colors.white,
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: DropdownButton<String>(
+                      value: selectedChoice,
+                      onChanged: (String? newValue) {
+                        if (newValue != null) {
+                          setState(() {
+                            selectedChoice = newValue;
+                          });
+                        }
+                      },
+                      items: choices.map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                    ),
+
+                  ),
+                )
+              ],
+            ),
+
+            const SizedBox(height:20),
+
+
+
+
+
+
       Padding(
         padding:
         const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
@@ -384,7 +435,7 @@ class _AddCheckInOutState extends State<AddCheckInOut> {
               Check_In_Out_Screen.date = date;
               Check_In_Out_Screen.date = enterHour;
               Check_In_Out_Screen.date = exitHour;
-              Check_In_Out_Screen.addtoList(date, enterHour, exitHour, selectedName)
+              Check_In_Out_Screen.addtoList(date, enterHour, exitHour);
 
               Navigator.pop(context);
 

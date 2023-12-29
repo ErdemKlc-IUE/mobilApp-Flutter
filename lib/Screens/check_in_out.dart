@@ -54,9 +54,7 @@ class Check_In_Out_Screen extends StatefulWidget {
   static void changeExitHour (){
     _Check_In_Out_ScreenState.exitHourList[index] = exitHour;
   }
-  static void changeSelectedName (){
-    _Check_In_Out_ScreenState.selectedNameList[index] = selectedName;
-  }
+
 
   @override
   _Check_In_Out_ScreenState createState() => _Check_In_Out_ScreenState();
@@ -68,7 +66,7 @@ class _Check_In_Out_ScreenState extends State<Check_In_Out_Screen> {
   static List<String> dateList = [];
   static List<String> enterHourList = [];
   static List<String> exitHourList = [];
-  static List<String> selectedNameList = [];
+
 
 
   @override
@@ -112,8 +110,8 @@ class _Check_In_Out_ScreenState extends State<Check_In_Out_Screen> {
                         builder: (BuildContext context) {
                           return AlertDialog(
                             title: Text(dateList.elementAt(index)),
-                            content: Text('Name: ' + selectedNameList.elementAt(index) +
-                                '\nDate: ' + dateList.elementAt(index) +
+                            content: Text(
+                                'Date: ' + dateList.elementAt(index) +
                                 '\nEnter Hour: ' + enterHourList.elementAt(index)+
                                 '\nExit Hour: ' + exitHourList.elementAt(index),
                               style: const TextStyle(
