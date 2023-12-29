@@ -48,6 +48,12 @@ class EmployeeOperationsScreen extends StatefulWidget {
     return _EmployeeOperationsScreenState.hourlySalaryList.elementAt(index);
   }
 
+  static List<String> getEmployeeList(){
+    return _EmployeeOperationsScreenState.employeeList;
+  }
+
+
+
   @override
   _EmployeeOperationsScreenState createState() => _EmployeeOperationsScreenState();
 }

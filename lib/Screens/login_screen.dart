@@ -117,9 +117,11 @@ class _LoginState extends State<LoginScreen> {
                     style: ElevatedButton.styleFrom(
                         primary: Colors.teal[100],),
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomeScreen()));
+
+                      //Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+
+                      if (emailController.text == "email@email.com" && passwordController.text == "1234"){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));}
                       /*if (_formKey.currentState!.validate()) {
                         // Navigate the user to the Home page
                       } else {

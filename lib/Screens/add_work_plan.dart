@@ -35,6 +35,7 @@ class _AddWorkPlanScreenState extends State<AddWorkPlanScreen> {
 
       appBar: AppBar(
         title: Text('Work Plan'),
+        backgroundColor: Colors.teal,
       ),
 
       body: Column(
