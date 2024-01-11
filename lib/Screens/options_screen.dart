@@ -1,11 +1,11 @@
 
 import 'package:flutter/material.dart';
+import 'package:se380_project/Screens/employee_data_screen.dart';
 import 'package:se380_project/Screens/employee_operations.dart';
 import 'package:se380_project/Screens/work_plan.dart';
 
 import 'add_work_plan.dart';
 import 'check_in_out.dart';
-import 'print_file_generation.dart';
 import 'info_screen.dart';
 import 'leave_days.dart';
 
@@ -94,7 +94,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
                 backgroundColor: Colors.teal[100],
               ),
               child: const Text(
-                'Print File Generation',
+                'Employee Data',
                 style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
@@ -104,7 +104,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
               onPressed: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => PrintFileGenerationScreen()));
+                    MaterialPageRoute(builder: (context) => EmployeeDataScreen()));
               },
             ),
 

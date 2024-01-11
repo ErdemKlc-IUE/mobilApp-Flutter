@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:se380_project/Screens/home_screen.dart';
+import 'package:se380_project/Screens/login_screen.dart';
 
 
 class ProfileScreen extends StatefulWidget {
@@ -42,29 +43,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             SizedBox(height: 10),
             const Text(
-              'NAME-SURNAME',
+              'MANAGER',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0),
             ),
             SizedBox(height: 40),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(185, 50),
-                backgroundColor: Colors.teal[100],
-                textStyle: TextStyle(color: Colors.indigo[800])
-              ),
-              child: const Text(
-                  'Change Password',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 17.0,
-                  ),
-                ),
-              onPressed: () {
-                _showChangePasswordDialog(context);
-              },
-            ),
-            SizedBox(height: 10),
+
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   minimumSize: Size(185, 50),
@@ -185,6 +168,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void _logout() {
     Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const HomeScreen()));
+        MaterialPageRoute(builder: (context) => const LoginScreen(title: "")));
   }
 }

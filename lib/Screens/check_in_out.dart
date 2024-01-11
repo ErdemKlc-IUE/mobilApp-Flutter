@@ -66,6 +66,7 @@ class _Check_In_Out_ScreenState extends State<Check_In_Out_Screen> {
   static List<String> dateList = [];
   static List<String> enterHourList = [];
   static List<String> exitHourList = [];
+  static List<String> employeeList = EmployeeOperationsScreen.getEmployeeList();
 
 
 
@@ -93,7 +94,7 @@ class _Check_In_Out_ScreenState extends State<Check_In_Out_Screen> {
             //height of the box to accommodate buttons
             child: ListView.builder(
               scrollDirection: Axis.vertical,
-              itemCount: dateList.length,
+              itemCount: employeeList.length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                   padding: const EdgeInsets.all(6.0),
@@ -104,46 +105,12 @@ class _Check_In_Out_ScreenState extends State<Check_In_Out_Screen> {
 
                     ),
                     onPressed: () {
-                      EmployeeOperationsScreen.index = index;
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: Text(dateList.elementAt(index)),
-                            content: Text(
-                                'Date: ' + dateList.elementAt(index) +
-                                '\nEnter Hour: ' + enterHourList.elementAt(index)+
-                                '\nExit Hour: ' + exitHourList.elementAt(index),
-                              style: const TextStyle(
-                                  fontSize: 20
-                              ),),
-                            actions: <Widget>[
-
-                              TextButton(
-                                child: Text('Edit'),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                  Navigator.pop(context);
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(builder: (context) => EditCheckInOut()));
-                                },
-                              ),
-
-                              TextButton(
-                                child: Text('OK'),
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                              ),
-
-
-                            ],
-                          );
-                        },
-                      );
+                      Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => AddCheckInOut()));
                     },
-                    child: Text(dateList[index],
+                    child: Text(employeeList[index],
                       style: const TextStyle(
                         color: Colors.black,
                         fontSize: 20,
@@ -154,6 +121,7 @@ class _Check_In_Out_ScreenState extends State<Check_In_Out_Screen> {
               },
             ),
           ),
+
           SizedBox(height:35), //spacing between the button list and icon buttons
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -223,3 +191,41 @@ class _Check_In_Out_ScreenState extends State<Check_In_Out_Screen> {
     );
   }
 }
+
+/*EmployeeOperationsScreen.index = index;
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text(employeeList.elementAt(index)),
+                            content: Text('Name: ' + employeeList.elementAt(index) +
+                                '\nEnter Hour: ' + enterHourList.elementAt(index)+
+                                '\nExit Hour: ' + exitHourList.elementAt(index),
+                              style: const TextStyle(
+                                  fontSize: 20
+                              ),),
+                            actions: <Widget>[
+
+                              /*TextButton(
+                                child: Text('Edit'),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                  Navigator.pop(context);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => EditEmployeeScreen()));
+                                },
+                              ),*/
+
+                              TextButton(
+                                child: Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+
+
+                            ],
+                          );
+                        },
+                      );*/

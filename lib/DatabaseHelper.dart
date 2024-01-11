@@ -2,12 +2,9 @@ import 'package:se380_project/User.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
-<<<<<<< Updated upstream
 
-abstract class DatabaseHelper {
-=======
 class DatabaseHelper {
->>>>>>> Stashed changes
+
   static Database? _database;
 
   static Future<void> init() async {
