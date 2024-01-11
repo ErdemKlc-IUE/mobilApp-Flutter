@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:se380_project/Screens/general_employee_screen.dart';
 import 'package:se380_project/Screens/personal_employee_screen.dart';
 
-class ExcelFileGenerationScreen extends StatefulWidget {
-  const ExcelFileGenerationScreen({super.key});
+class PrintFileGenerationScreen extends StatefulWidget {
+  const PrintFileGenerationScreen({super.key});
 
   @override
-  _ExcelFileGenerationScreenState createState() => _ExcelFileGenerationScreenState();
+  _PrintFileGenerationScreenState createState() => _PrintFileGenerationScreenState();
 }
 
 
-class _ExcelFileGenerationScreenState extends State<ExcelFileGenerationScreen> {
+class _PrintFileGenerationScreenState extends State<PrintFileGenerationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Excel File Generation'),
+        title: Text('Print File'),
         backgroundColor: Colors.teal,
       ),
       body: Center(
@@ -26,7 +26,7 @@ class _ExcelFileGenerationScreenState extends State<ExcelFileGenerationScreen> {
             ElevatedButton(
               child: Text('General'),
               style: ElevatedButton.styleFrom(
-                primary: Colors.teal, // Change this color to the desired background color
+                primary: Colors.teal,
               ),
               onPressed: () {
                 Navigator.push(

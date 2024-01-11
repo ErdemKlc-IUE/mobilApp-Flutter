@@ -1,8 +1,14 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:se380_project/Screens/addEmployee_screen.dart';
-import 'package:se380_project/Screens/excel_file_generation.dart';
+import 'package:se380_project/Screens/display_employee.dart';
+import 'package:se380_project/Screens/print_file_generation.dart';
 import 'employee_operations.dart';
+
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
+
+
 
 class GeneralEmployeeScreen extends StatefulWidget {
  const GeneralEmployeeScreen({super.key});
@@ -19,7 +25,6 @@ class _GeneralEmployeeScreenState extends State<GeneralEmployeeScreen> {
   List<List<dynamic>> employees = [];
 
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,40 +36,24 @@ class _GeneralEmployeeScreenState extends State<GeneralEmployeeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-         ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => EmployeeOperationsScreen()));
-              },
-              child: Text('Go to Employee Operations'),
-              style: ElevatedButton.styleFrom(
-                primary: Colors
-                    .teal, // Change this color to the desired background color
-              ),
-            ),
             SizedBox(height: 40),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 40),
+                SizedBox(width: 50),
                 ElevatedButton(
-                  onPressed: () => _generateExcelFile(),
-                  child: Icon(Icons.file_download),
+                  onPressed: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => DisplayEmployeeScreen()));
+                  },
+                  child: Text("Display PDF"),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.teal,
+                    primary: Colors.teal, // Change this color to the desired background color
                   ),
                 ),
-                SizedBox(width: 40),
-                ElevatedButton(
-                  onPressed: () => _printEmployees(),
-                  child: Icon(Icons.print),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors
-                        .teal, // Change this color to the desired background color
-                  ),
-                ),
+                SizedBox(width: 50),
               ],
             ),
           ],
@@ -73,15 +62,6 @@ class _GeneralEmployeeScreenState extends State<GeneralEmployeeScreen> {
     );
   }
 
+    }
 
-
-
-  void _printEmployees() async {
-
-  }
-
-  void _generateExcelFile() async {
-
-  }
-}
 
