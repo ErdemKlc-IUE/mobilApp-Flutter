@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "952270994641",
+    "project_id": "se-380-ad120",
+    "storage_bucket": "se-380-ad120.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:952270994641:android:72e3b6475538be86d419f0",
+        "android_client_info": {
+          "package_name": "com.example.se380_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8kAUjYtlZT57-7E-3KSLzU00QXJYnwqU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
